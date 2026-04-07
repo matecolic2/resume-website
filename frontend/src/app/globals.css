@@ -1,0 +1,594 @@
+:root {
+  --bg: #0a0e16;
+  --surface: #132038;
+  --surface-2: #1f3150;
+  --text: #e6ecff;
+  --muted: #9bb2d4;
+  --accent: #4ab8ff;
+  --accent-2: #e279ff;
+  /* --border: rgba(255, 255, 255, 0.16); */
+  --border: rgba(255, 255, 255, 0.064);
+  --radius: 18px;
+  --max-width: 1080px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 10%, rgba(74, 184, 255, 0.12), transparent 45%),
+     radial-gradient(circle at 80% 110%, rgba(74, 183, 255, 0.082), transparent 40%),
+    linear-gradient(4deg, #0b1221 0%, #070b16 100%);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* a:hover,
+a:focus-visible {
+  
+} */
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.main,
+.container {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
+  padding: 1rem 1.15rem;
+}
+
+.welcome.container {
+  padding: 2rem 1.15rem 0rem 1.15rem;
+}
+
+
+.eyebrow {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 0.87rem;
+  color: var(--accent-2);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("/images/try.png");
+  background-repeat: no-repeat;
+  background-size: 500px;
+  background-position: 100% 100%;
+  opacity: 0;
+  z-index: -1;
+  animation: fadeIn 2s forwards;
+  animation-delay: 1s; /* starts fading slightly before hero appears */
+}
+
+.hero {  
+  padding: 0rem 0rem 4.3rem 0rem;
+  position: relative;
+
+  opacity: 0;
+  transform: translateY(7px);
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 0.55s;
+}
+
+.hero h1 {
+  margin-top: 2rem;  
+  margin-bottom: 0px;
+  font-size: clamp(2.3rem, 4vw, 2.8rem);
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: clamp(1rem, 1.3vw, 2.8rem);
+}
+
+.hero p {
+  margin-top: 2.6rem;
+  margin-bottom: 1.6rem;
+  max-width: 43ch;
+
+  opacity: 0;
+  transform: translateY(7px);
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 0.65s;
+}
+
+.hero a {
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.55rem 1.2rem;
+  border-radius: 14px;
+  border: none;
+  text-decoration: none;
+}
+
+.hero-triangle {
+  position: absolute;
+  top: 17%;
+  right: 10%;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 70px solid rgba(74, 183, 255, 0.1);
+  filter: drop-shadow(0 0 5px rgba(74, 183, 255, 0.753));
+  z-index: 1;
+  animation: rotateTriangle 100s linear infinite, fadeIn 4s ease forwards;
+}
+
+
+.hero-triangle--small {
+  position: absolute;
+  top: 30%;
+  right: 21%;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 90px solid rgba(74, 183, 255, 0.1);
+  filter: drop-shadow(0 0 5px rgba(74, 183, 255, 0.753));
+  z-index: 1;
+}
+
+.hero-triangle--small2 {
+  position: absolute;
+  top: 53%;
+  right: 19%;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid rgba(74, 183, 255, 0.07);
+  filter: drop-shadow(0 0 5px rgba(74, 183, 255, 0.753));
+  z-index: 1;
+}
+
+@keyframes rotateTriangle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateTriangleReverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+#about {
+  padding: 0.2rem 0rem 2.5rem 0rem;
+  background: rgba(255, 255, 255, 0.035);
+
+  opacity: 0;
+  transform: translateY(7px);
+
+  animation: 
+    fadeUp 0.6s ease forwards,
+    box-shadow-ease 1s ease forwards 0s;
+}
+
+@keyframes box-shadow-ease {
+  from {
+    box-shadow: 0 0 0 rgba(237, 138, 255, 0);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(138, 202, 255, 0.111);
+  }
+}
+
+#about-heading {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.55s;
+}
+
+#about .container p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.65s;
+}
+
+#about .container li {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 0.75s;
+}
+
+.inpageNav {
+  margin-top: 0rem;
+  padding: 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 14, 22, 0.892);
+  backdrop-filter: blur(10px);
+  z-index: 20;
+
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.inpageNav a {
+  background: linear-gradient(115deg, rgba(10, 14, 22, 0.892), rgba(30, 55, 109, 0.306), rgba(10, 14, 22, 0.892));
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  margin: 0 0.75rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  color: var(--muted);
+
+  transition: background-position 0.6s ease, background-color 0.6s ease, border-color 0.6s ease, color 0.3s ease;
+}
+
+.inpageNav a:hover,
+.inpageNav a:focus-visible {
+  background-color: rgba(24, 45, 90, 0.659);
+  background-position: 20% 0%;
+  color: #c9d7ed
+}
+
+.inpageNav a.active {
+  background-position: 75% 0%;
+  background-color: rgba(30, 55, 109, 0.306);
+  border-color: rgba(45, 76, 143, 0.734);
+  color: #c9d7ed
+}
+
+
+section {
+  scroll-margin-top: 80px;
+}
+
+.section {
+  padding: 2.2rem 0;
+}
+
+.section h2 {
+  margin-bottom: 0.65rem;
+  font-size: 1.85rem;
+}
+
+#projects {
+  padding-top: 4.5rem;
+  padding-bottom: 6.5rem;
+}
+
+#contact-heading,
+#contact-paragraph,
+#projects-heading,
+#projects-paragraph {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#contact-heading.show,
+#projects-heading.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+#contact-paragraph.show,
+#projects-paragraph.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.3rem;
+  margin-top: 1rem;
+}
+
+.projectCard {
+  background: linear-gradient(180deg, rgba(26, 42, 69, 0.82), rgba(24, 39, 63, 0.92));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  transition: opacity 1.2s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.6s ease;
+  will-change: transform;
+  
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.contactCard.show,
+.projectCard.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger with :not(:hover) - delays work on scroll-in, ignored on interact */
+.contactGrid .contactCard:nth-child(1).show:not(:hover):not(:focus-within),
+.projectsGrid .projectCard:nth-child(1).show:not(:hover):not(:focus-within) { 
+  transition-delay: 0s, 0s, 0s; 
+}
+.contactGrid .contactCard:nth-child(2).show:not(:hover):not(:focus-within),
+.projectsGrid .projectCard:nth-child(2).show:not(:hover):not(:focus-within) { 
+  transition-delay: 0.10s, 0.10s, 0s; 
+}
+.contactGrid .contactCard:nth-child(3).show:not(:hover):not(:focus-within),
+.projectsGrid .projectCard:nth-child(3).show:not(:hover):not(:focus-within) { 
+  transition-delay: 0.18s, 0.18s, 0s; 
+}
+
+/* Instant hover animations */
+.projectsGrid .projectCard:nth-child(1):hover,
+.projectsGrid .projectCard:nth-child(2):hover,
+.projectsGrid .projectCard:nth-child(3):hover,
+.projectsGrid .projectCard:focus-within {
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.6s ease !important;
+  transition-delay: 0s !important;
+  transform: translateY(0) scale(1.014);
+  border-color: rgba(74, 183, 255, 0.24);
+}
+
+#contact .container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+
+  background-image: url("/images/try2.png");
+  background-repeat: no-repeat;
+  background-size: 500px;
+
+  /* now this moves freely */
+  background-position: 0% 0%;
+
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none; /* 🔥 allows clicks to pass through */
+  animation: fadeIn 2s forwards;
+  animation-delay: 1.15s;
+}
+
+#contact {
+  position: relative;
+  isolation: isolate; /* 🔥 key fix */
+  padding-bottom: 7.5rem;
+}
+
+.contactCard {
+  background: #151d2d;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  
+  transition: opacity 1.2s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.6s ease;
+  will-change: transform;
+
+  opacity: 0;
+  transform: translateY(30px);
+  
+}
+
+.projectCard h3,
+.contactCard h3 {
+  margin-top: 0;
+}
+
+.tags {
+  margin-top: 0.75rem;
+  margin-bottom: 1.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  padding: 0.2rem 0.55rem;
+  background: rgba(74, 184, 255, 0.12);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+/* Base button styles (applies to all buttons) */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.2s; /* default delay */
+  transition: background-position 0.6s ease, box-shadow 0.4s ease, filter 0.2s ease;
+}
+
+/* Accent gradient button (shared styles) */
+.button.accent {
+  background: linear-gradient(115deg, var(--accent), var(--accent-2), var(--accent));
+  background-size: 200% 200%;
+  padding: 0.68rem 1.25rem;
+  color: #0a1422;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.476); 
+}
+
+/* Contact Me button: only change the animation delay */
+.button.contact-me {
+  animation-delay: 0.85s;
+}
+
+/* Hover - focus effects for all buttons */
+.button:hover,
+.button:focus-visible {
+  background-position: 40% 0%;
+  box-shadow: 0 0 6.5px rgba(237, 138, 255, 0.327);
+  filter: brightness(1.065);
+}
+
+.button.social {
+  background: rgba(42, 48, 61, 0.497);
+  
+}
+.button.social:hover,
+.button.social:focus-visible {
+  box-shadow: 0 0 3px rgba(55, 80, 208, 0.327);
+  filter: brightness(1.14);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.3rem;
+  margin-top: 1rem;
+}
+
+.contactEmailWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between email and copy button */
+}
+
+.copyButton {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(28, 42, 71, 0.95);
+  color: var(--text);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.25s; /* slight delay after main button */
+  transition: background-position 0.6s ease, box-shadow 0.4s ease, filter 0.2s ease;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  background-position: 40% 0%;
+  box-shadow: 0 0 2px rgba(55, 80, 208, 0.327);
+  filter: brightness(1.12);
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background: rgba(20, 30, 50, 0.95);
+  color: var(--text);
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+
+  font-size: 0.9rem;
+  z-index: 9999;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: toastFade 2s ease forwards;
+}
+
+@keyframes toastFade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10%, 85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.footer {
+  background-color: rgba(10, 14, 22, 0.892);
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0.8rem 0.9rem;
+  }
+
+  .hero {
+    padding: 2rem 0 1.2rem;
+  }
+
+  .inpageNav a {
+    margin: 0 0.5rem;
+  }
+
+  .section {
+    padding: 1.2rem 0;
+  }
+}
