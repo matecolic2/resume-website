@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Mate Colic | CV Website",
-  description: "Sleek dark theme CV website with About Me, Projects, and Contact sections.",
+  description: "Dark theme CV website with About Me, Projects, and Contact sections.",
   openGraph: {
     title: "Mate Colic | CV Website",
-    description: "Professional dark-theme portfolio with modern rounded cards",
+    description: "Dark theme CV website with About Me, Projects, and Contact sections.",
     type: "website",
   },
 };

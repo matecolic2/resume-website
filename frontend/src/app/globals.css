@@ -96,10 +96,22 @@ textarea {
   animation-delay: 1s; /* starts fading slightly before hero appears */
 }
 
+@media (max-width: 740px) {
+  .hero::before {
+    background-image: url("/images/try2.png");
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 500px;
+    background-position: 0% 2700%;
+    transform: scaleX(-1);
+  }
+}
+
 .hero {  
   padding: 0rem 0rem 4.3rem 0rem;
   position: relative;
-
   opacity: 0;
   transform: translateY(7px);
   animation: fadeUp 0.6s ease forwards;
@@ -159,7 +171,7 @@ textarea {
   right: 21%;
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
+  border-left: 20px solid transparent;  
   border-right: 50px solid transparent;
   border-top: 90px solid rgba(74, 183, 255, 0.1);
   filter: drop-shadow(0 0 5px rgba(74, 183, 255, 0.753));
@@ -168,7 +180,7 @@ textarea {
 
 .hero-triangle--small2 {
   position: absolute;
-  top: 53%;
+  top: 52%;
   right: 19%;
   width: 0;
   height: 0;
@@ -177,6 +189,27 @@ textarea {
   border-top: 30px solid rgba(74, 183, 255, 0.07);
   filter: drop-shadow(0 0 5px rgba(74, 183, 255, 0.753));
   z-index: 1;
+}
+
+@media (max-width: 740px) {
+  .hero-triangle {
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-top: 50px solid rgba(74, 183, 255, 0.1);
+  }
+  .hero-triangle--small {
+    border-left: 10px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 40px solid rgba(74, 183, 255, 0.1);
+    top: 25%;
+    right: 5%;
+  }
+  .hero-triangle--small2 {
+    border-left: 10px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgba(74, 183, 255, 0.059);
+    top: 27%;
+  }
 }
 
 @keyframes rotateTriangle {
@@ -342,8 +375,13 @@ section {
   transition: opacity 1.2s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.6s ease;
   will-change: transform;
   
+  z-index: 2;
   opacity: 0;
   transform: translateY(30px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.1px; /* adjust this */
 }
 
 .contactCard.show,
@@ -387,13 +425,25 @@ section {
   background-size: 500px;
 
   /* now this moves freely */
-  background-position: 0% 0%;
+  background-position: 0% 10%;
 
   opacity: 0;
   z-index: -1;
   pointer-events: none; /* 🔥 allows clicks to pass through */
   animation: fadeIn 2s forwards;
   animation-delay: 1.15s;
+  transform: translateY(-300px);
+}
+
+@media (max-width: 740px) {
+  #contact .container::before {
+    
+    background-size: 450px;
+    background-image: url("/images/try.png");
+    transform: scaleX(-1);
+    background-position: 100% 100%;
+    
+  }
 }
 
 #contact {
@@ -414,17 +464,29 @@ section {
 
   opacity: 0;
   transform: translateY(30px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+ overflow-wrap: anywhere;
   
 }
 
-.projectCard h3,
+.projectCard h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.projectCard p {
+  margin-bottom: 0.6rem;
+}
 .contactCard h3 {
   margin-top: 0;
 }
 
 .tags {
-  margin-top: 0.75rem;
-  margin-bottom: 1.7rem;
+  margin-top: 0.2rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -466,6 +528,9 @@ section {
   font-weight: 600;
   border: none;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.476); 
+
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 /* Contact Me button: only change the animation delay */
@@ -483,7 +548,7 @@ section {
 
 .button.social {
   background: rgba(42, 48, 61, 0.497);
-  
+  flex: 1;
 }
 .button.social:hover,
 .button.social:focus-visible {
@@ -501,7 +566,7 @@ section {
 .contactEmailWrapper {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* space between email and copy button */
+  gap: 0.7rem;
 }
 
 .copyButton {
@@ -575,20 +640,19 @@ section {
   font-size: 0.9rem;
 }
 
-@media (max-width: 640px) {
-  .container {
-    padding: 0.8rem 0.9rem;
+@media (max-width: 740px) {
+  body {
+  background: radial-gradient(circle at 20% 8%, rgba(74, 184, 255, 0.12), transparent 14%),
+     radial-gradient(circle at 80% 100%, rgba(74, 183, 255, 0.082), transparent 10%),
+    linear-gradient(4deg, #0b1221 0%, #070b16 100%);
+  }
+  
+  #about {
+    padding: 0.2rem 0rem 2rem 0rem;
   }
 
-  .hero {
-    padding: 2rem 0 1.2rem;
-  }
-
-  .inpageNav a {
-    margin: 0 0.5rem;
-  }
-
-  .section {
-    padding: 1.2rem 0;
+  #projects {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
   }
 }

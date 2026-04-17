@@ -11,7 +11,7 @@ export default function Home() {
   const [showToast, setShowToast] = useState(false);
 
   const handleCopy = () => {
-  navigator.clipboard.writeText("jane.doe@example.com");
+  navigator.clipboard.writeText("matecolic2@gmail.com");
   setShowToast(true);
   setTimeout(() => setShowToast(false), 2000);
   };
@@ -131,7 +131,7 @@ export default function Home() {
       
       <header className="hero" id="top">
         <div className="container">
-          <h1>Mate Colic</h1>
+          <h1>M C</h1>
           <h2>Software QA Engineer</h2>
           <p>
             I build reliable, scalable test automation with clean structure, strong validation, and consistent quality across web applications.
