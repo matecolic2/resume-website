@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export default function Home() {
+
+  const [open, setOpen] = useState(false);
   
   const [showToast, setShowToast] = useState(false);
 
@@ -116,9 +118,18 @@ export default function Home() {
   return (
     <main>
       <nav className="inpageNav" aria-label="Page Navigation">
+        <button 
+          className={`menuButton ${open ? "open" : ""}`}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "✕" : "☰"}
+        </button>
+
+        <div className={`navLinks ${open ? "active" : ""}`}>
         <a href="#about">About Me</a>
         <a href="#projects">My Projects</a>
         <a href="#contact">Contact</a>
+        </div>
       </nav>
 
       <div className="welcome container">
